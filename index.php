@@ -4,13 +4,13 @@
 
         public $name;
         public $cast;
-        public $time;
+        public $duration;
         public $date;
 
-        public function __construct($name, $cast, $time, $date) {
+        public function __construct($name, $cast, $duration, $date) {
             $this -> name = $name;
             $this -> cast = $cast;
-            $this -> time = $time;
+            $this -> duration = $duration;
             $this -> date = $date;
         }
 
@@ -22,38 +22,25 @@
         }
     }
 
-    $movie1 = new Movie("Interstellar", "Matthew McConaughey, Anne Hathaway, Jessica Chastain, Bill Irwin", "2h 49m", "2014-09-05");
-    $movie2 = new Movie("Oppenheimer", "Cillian Murphy, Emily Blunt, Matt Damon, Robert Downey Jr.", "3h", "2023-08-23");
+    $movies = [
+        
+        new Movie("Interstellar", ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain", "Bill Irwin"], "2h 49m", "2014-09-05"),
+        new Movie("Oppenheimer", ["Cillian Murphy", "Emily Blunt", "Matt Damon", "Robert Downey Jr."], "3h", "2023-08-23")
+    ];
 
+    foreach($movies as $movie) {
+        echo "Title: " . $movie -> name;
+        echo "<br>";
+        echo "Cast: " . implode(", ", $movie -> cast);
+        echo "<br>";
+        echo "Duration: " . $movie -> duration;
+        echo "<br>";
+        echo "Release Date: " . $movie -> date;
+        echo "<br><br><br>";
+    }
 
-    var_dump($movie1);
-    echo "<br> <br>";
-
-    var_dump($movie1 -> name);
+    var_dump($movie -> getName());
     echo "<br>";
-    var_dump($movie1 -> cast);
-    echo "<br>";
-    var_dump($movie1 -> time);
-    echo "<br>";
-    var_dump($movie1 -> date);
-
-    echo "<br>-------------------------------<br>";
-
-    var_dump($movie2);
-    echo "<br> <br>";
-
-    var_dump($movie2 -> name);
-    echo "<br>";
-    var_dump($movie2 -> cast);
-    echo "<br>";
-    var_dump($movie2 -> time);
-    echo "<br>";
-    var_dump($movie2 -> date);
-
-    echo "<br>-------------------------------<br>";
-
-    var_dump($movie1 -> getName());
-    echo "<br>";
-    $movie1 -> setName("Pulp Fiction");
-    var_dump($movie1 -> getName());
+    $movie -> setName("Pulp Fiction");
+    var_dump($movie -> getName());
 ?>
